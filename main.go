@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"time"
 )
 
 const (
@@ -26,6 +27,19 @@ func main() {
 	me := &Artist{Name: "Matt", Genre: "Electro", Songs: 42}
 	fmt.Printf("%s has released their %dth song\n", me.Name, newRelease(me))
 	fmt.Printf("%s has a total of %d songs\n", me.Name, me.Songs)
+
+	// Type conversions
+	i := 42
+	f := float64(i)
+	u := uint(f)
+
+	fmt.Printf("Type of u is %T\n", u)
+
+	foo := map[string]interface{}{
+		"Matt": 42,
+	}
+	timeMap(foo)
+	fmt.Println(foo)
 }
 
 func add(x, y int) int {
@@ -56,4 +70,12 @@ type Artist struct {
 func newRelease(a *Artist) int {
 	a.Songs++
 	return a.Songs
+}
+
+func timeMap(y interface{}) {
+	// Type assertion
+	z, ok := y.(map[string]interface{})
+	if ok {
+		z["updated_at"] = time.Now()
+	}
 }
