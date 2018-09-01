@@ -61,4 +61,11 @@ func main() {
 	if z == nil {
 		fmt.Println("z == nil is true")
 	}
+
+	pow := []int{1, 2, 4, 8, 16, 32, 64, 128}
+	for i, v := range pow {
+		fmt.Printf("2 ** %d = %d\n", i, v)
+	}
+
+	// Can range over arrays, slices, strings, maps, and channels
 }
